@@ -4,14 +4,15 @@
 The Auto Assignment application is a custom ServiceNow app designed to streamline the process of auto-assigning tasks and incidents to appropriate groups. This application ensures that incoming incidents and catalog tasks are automatically assigned to predefined groups based on specific criteria, reducing manual intervention and improving workflow efficiency.
 
 ## Installation
-- On GitHub:
-  1. Download XML
-- Now go to your ServiceNow instance:
-  2. Go to All > System Update Sets > Retrieved Update Sets
+1. On GitHub:
+  - Download XML
+2. Now go to your ServiceNow instance:
+  1. Go to All > System Update Sets > Retrieved Update Sets
   3. Click on Import Update Set from XML
   4. Upload the XML and click the upload button
   5. Preview and commit
-- Now it's successfully deployed.
+
+🤗 Now it's successfully deployed.
 
 <!-- ## Installation
 1. Clone or download this repository.
