@@ -47,7 +47,6 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2024-09-29 00:07:43</sys_created_on>
-        <sys_id>0ece003b83b49210c99ca6d0deaad30d</sys_id>
         <sys_name>Scheduled Job</sys_name>
         <sys_package display_value="Auto Assignment" source="x_snc_auto_assign">fabcaa2383bc5210c99ca6d0deaad386</sys_package>
         <sys_policy/>

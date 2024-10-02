@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" db_object_id="8ab07a6783bc5210c99ca6d0deaad339" label="Login-Logout" max_length="40" name="x_snc_auto_assign_login_logout" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,no_sort=true,slushbucket_ref_no_expand=true" label="Dedicated Catalog Items" max_length="1024" name="dedicated_catalog_items" reference="sc_cat_item" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true" label="Dedicated Catalog Items Only" max_length="255" name="dedicated_catalog_items_only" type="boolean"/>
+        <element label="Last Assigned Date and Time" max_length="40" name="last_assigned_date_and_time" read_only="true" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Subscription" mandatory="true" max_length="32" name="subscription" reference="x_snc_auto_assign_subscription" type="reference"/>
+        <element label="Ticket Assigned" max_length="25" name="ticket_assigned" read_only="true" type="journal_input"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" display="true" label="User" mandatory="true" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="subscription"/>
+        </index>
+        <index name="index2">
+            <element name="user"/>
+        </index>
+    </element>
+</database>
