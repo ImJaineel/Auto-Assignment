@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_policy">
+    <sys_ui_policy action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <conditions table="x_snc_auto_assign_login_logout">dedicated_catalog_items_only=true<item endquery="false" field="dedicated_catalog_items_only" goto="false" newquery="false" operator="=" or="false" value="true"/>
+        </conditions>
+        <description/>
+        <global>true</global>
+        <inherit>false</inherit>
+        <isolate_script>true</isolate_script>
+        <model_id/>
+        <model_table/>
+        <on_load>true</on_load>
+        <order>100</order>
+        <reverse_if_false>true</reverse_if_false>
+        <run_scripts>false</run_scripts>
+        <script_false><![CDATA[function onCondition() {}]]></script_false>
+        <script_true><![CDATA[function onCondition() {}]]></script_true>
+        <set_values/>
+        <short_description>if dedicated catalog items only then let's select catalog items</short_description>
+        <sys_class_name>sys_ui_policy</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-09-28 19:32:09</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>9dbf0ba383709210c99ca6d0deaad30e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>if dedicated catalog items only then let's select catalog items</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Auto Assignment" source="x_snc_auto_assign">fabcaa2383bc5210c99ca6d0deaad386</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Auto Assignment">fabcaa2383bc5210c99ca6d0deaad386</sys_scope>
+        <sys_update_name>sys_ui_policy_9dbf0ba383709210c99ca6d0deaad30e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-09-28 19:32:09</sys_updated_on>
+        <table>x_snc_auto_assign_login_logout</table>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_ui_policy>
+</record_update>

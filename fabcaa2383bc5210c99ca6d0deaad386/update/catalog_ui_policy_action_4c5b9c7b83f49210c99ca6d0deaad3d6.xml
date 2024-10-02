@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="catalog_ui_policy_action">
+    <catalog_ui_policy_action action="INSERT_OR_UPDATE">
+        <catalog_item display_value="Request to setup Auto-Assignment for group">3e565cb383f49210c99ca6d0deaad3b4</catalog_item>
+        <catalog_variable>IO:bc09d8b783f49210c99ca6d0deaad32a</catalog_variable>
+        <cleared>false</cleared>
+        <disabled>ignore</disabled>
+        <field/>
+        <field_message/>
+        <field_message_type>none</field_message_type>
+        <mandatory>true</mandatory>
+        <order>100</order>
+        <sys_class_name>catalog_ui_policy_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-09-29 01:02:29</sys_created_on>
+        <sys_id>4c5b9c7b83f49210c99ca6d0deaad3d6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>incident_priority</sys_name>
+        <sys_package display_value="Auto Assignment" source="x_snc_auto_assign">fabcaa2383bc5210c99ca6d0deaad386</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Auto Assignment">fabcaa2383bc5210c99ca6d0deaad386</sys_scope>
+        <sys_update_name>catalog_ui_policy_action_4c5b9c7b83f49210c99ca6d0deaad3d6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-09-29 01:02:29</sys_updated_on>
+        <table/>
+        <ui_policy display_value="Make 'incident_priority' mandatory &amp; visible depending on 'incident' &amp; 'all_incident_priority'">392b543b83f49210c99ca6d0deaad31f</ui_policy>
+        <value/>
+        <value_action>ignore</value_action>
+        <variable>incident_priority</variable>
+        <variable_set/>
+        <visible>true</visible>
+    </catalog_ui_policy_action>
+</record_update>
