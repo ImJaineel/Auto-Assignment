@@ -44,7 +44,7 @@
         <sys_scope display_value="Auto Assignment">fabcaa2383bc5210c99ca6d0deaad386</sys_scope>
         <sys_update_name>sys_hub_flow_df1e8cb783b49210c99ca6d0deaad39f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2024-09-29 11:55:52</sys_updated_on>
+        <sys_updated_on>2024-10-02 15:52:37</sys_updated_on>
         <type>flow</type>
         <version>2</version>
     </sys_hub_flow>
@@ -82,7 +82,7 @@
         <name>Trigger:d3a59c7383f49210c99ca6d0deaad34f</name>
         <offset/>
         <offset_type>0</offset_type>
-        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as display_value="Jaineel Petiwale">6816f79cc0a8016401c5a33be04be441</run_as>
         <run_as_tz/>
         <run_dayofmonth>1</run_dayofmonth>
         <run_dayofweek/>
@@ -637,7 +637,7 @@
         <binding_strategy>com.snc.process_flow.engine.binding.RunAlways</binding_strategy>
         <plan>{"type":"PlanProxy","persistor":{"@class":".ChunkingPlanPersistor","table":"sys_flow_trigger_plan","id":"d7a59c7383f49210c99ca6d0deaad352","name":"plan","plan_signature":null}}</plan>
         <plan_id>df1e8cb783b49210c99ca6d0deaad39f</plan_id>
-        <snapshot>f2636c7783389210c99ca6d0deaad381</snapshot>
+        <snapshot>018e47f8c34152106a0cd4fc050131c0</snapshot>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2024-09-29 00:37:51</sys_created_on>
         <sys_domain>global</sys_domain>
