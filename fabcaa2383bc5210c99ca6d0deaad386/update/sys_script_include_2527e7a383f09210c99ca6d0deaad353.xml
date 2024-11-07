@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_auto_assign.AutoAssignment</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>***Auto-Assignment for Catalog task &amp; Incident***&#13;
+&#13;
+NOTE: "will triggering this please only send glide object of task table only"&#13;
+&#13;
+sysIdsToExclude =&gt; this array consist of subscription sys_id which are supposed to be ignored.&#13;
+&#13;
+This script include is designed to assign catalog task &amp; incidents automatically based on certain criteria stored in the u_tickets_auto_assignment_subscription and u_tickets_auto_assignment_tracker tables.&#13;
+&#13;
+function detail:&#13;
+assignTicket =&gt; Main Function, this runs whole logic&#13;
+getSubscriptions =&gt; this provides subscription based on assignmentGroup, isIncident, isCatalogTask, categoryOrItem, current.priority&#13;
+toBeAssigned =&gt; this picks the next person who is supposed to be assigned&#13;
+isEligible =&gt; this checks for where person who is selected, is eligible to be assigned</description>
+        <mobile_callable>false</mobile_callable>
+        <name>AutoAssignment</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var sysIdsToExclude = [
+    // Populate with actual sys_ids
+];
+
+var AutoAssignment = Class.create();
+AutoAssignment.prototype = {
+    initialize: function() {},
+
+    assignTicket: function(current) {
+        var ticketType = current.getRecordClassName();
+        var isIncident = ticketType === "incident";
+        var isCatalogTask = ticketType === "sc_task";
+
+        if (!isIncident && !isCatalogTask) {
+            gs.info("AutoAssignment Script Include Err => Invalid record type: " + ticketType, "AutoAssignment Script Include Err");
+            return;
+        }
+
+        var categoryOrItem = isIncident ? "current.ref_incident.u_smart_category" : current.ref_sc_task.cat_item; // Modify here if smart category is there on incident
+        var assignmentGroup = current.assignment_group;
+        var subscriptions = this.getSubscriptions(assignmentGroup, isIncident, isCatalogTask, categoryOrItem, current.priority);
+
+        if (subscriptions.length > 0) {
+            for (var i = 0; i < subscriptions.length; i++) {
+                var subscription = subscriptions[i];
+
+                if (subscription.active) {
+                    var assignedUser = this.toBeAssigned(subscription, current.number, assignmentGroup, ticketType, categoryOrItem);
+                    if (assignedUser) {
+                        current.assigned_to = assignedUser;
+                        current.update();
+                        gs.info(current.number + " has been assigned to " + current.assigned_to.name + " for " + current.assignment_group.name, "AutoAssignment");
+                        break;
+                    } else {
+						gs.info("fucked");
+					}
+                }
+            }
+        } else {
+            gs.info("No active subscriptions found for assignment group: " + assignmentGroup, "AutoAssignment");
+        }
+    },
+
+    getSubscriptions: function(assignmentGroup, isIncident, isCatalogTask, categoryOrItem, priority) {
+        var subscriptions = [];
+        var grSubscription = new GlideRecord('x_snc_auto_assign_subscription');
+        grSubscription.addQuery('groups', assignmentGroup);
+        grSubscription.addQuery('sys_id', 'NOT IN', sysIdsToExclude);
+        grSubscription.addQuery('active', true);
+
+        if (isIncident) {
+			// If Smart category is there on incidents
+			// grSubscription.addQuery('u_smart_categories', categoryOrItem).addOrCondition('u_for_all_smart_categories', true);
+            var priorities = ['p1_incident', 'p2_incident', 'p3_incident', 'p4_incident', 'p5_incident'];
+            if (priority >= 1 && priority <= 5) {
+                grSubscription.addQuery(priorities[priority - 1], true);
+            }
+        } else if (isCatalogTask) {
+            grSubscription.addQuery('sc_task', categoryOrItem).addOrCondition('all_catalog_items', true);
+            grSubscription.addQuery('catalog_items', isCatalogTask);
+        }
+
+        grSubscription.query();
+        while (grSubscription.next()) {
+            subscriptions.push(grSubscription);
+        }
+        return subscriptions;
+    },
+
+    toBeAssigned: function(subscription, ticketnumber, group, ticketType, ticketCat) {
+
+		// If Smart category is there on incidents
+		// var dedicated; 
+        // var catField;
+
+        // if (ticketType == 'incident') {
+        //     dedicated = 'u_dedicated_smart_categories';
+        //     catField = 'u_smart_categories';
+        // } else if (ticketType == 'sc_task') {
+        //     dedicated = 'u_dedicated_catalog_items';
+        //     catField = 'u_catalog_items';
+        // }
+
+		// var query = "u_subscription_name=" + subscription.sys_id + "^u_is_sme_avl=true^" + dedicated + "=false^NQu_subscription_name=" + subscription.sys_id + "^u_is_sme_avl=true^" + dedicated + "=true^" + catField + "LIKE" + ticketCat;
+		// If Smart category is there on incidents - end
+
+		var query = "subscription=" + subscription.sys_id + "^active=true";
+		
+        if (ticketType === 'sc_task') {
+            query += "^dedicated_catalog_items_only=false^NQsubscription=" + subscription.sys_id + "^active=true^dedicated_catalog_items_only=true^dedicated_catalog_itemsLIKE" + ticketCat;
+        }
+
+        var grTracker = new GlideRecord('x_snc_auto_assign_login_logout');
+        grTracker.addEncodedQuery(query);
+        grTracker.orderBy('last_assigned_date_and_time');
+        grTracker.query();
+
+        while (grTracker.next()) {
+            var assignedUser = grTracker.user;
+            if (this.isEligible(assignedUser, group)) {
+				grTracker.last_assigned_date_and_time = new GlideDateTime().getDisplayValue();
+                grTracker.ticket_assigned = "Ticket Assigned: " + ticketnumber;
+                grTracker.update();
+                return assignedUser;
+            }
+        }
+        return null;
+    },
+
+    isEligible: function(user, group) {
+        var grGroupMember = new GlideRecord('sys_user_grmember');
+        grGroupMember.addQuery('user', user);
+        grGroupMember.addQuery('user.active', true);
+        grGroupMember.addQuery('group', group);
+        grGroupMember.addQuery('group.active', true);
+        grGroupMember.query();
+
+		if (grGroupMember.next()) {
+			// User is a member of the group, now check for the ITIL role
+			var grUserRole = new GlideRecord('sys_user_has_role');
+			grUserRole.addQuery('state', 'active');
+			grUserRole.addQuery('user', user); // User Sys ID
+			grUserRole.addQuery('role.name', 'itil'); // Check for ITIL role
+			grUserRole.query();
+
+			if (grUserRole.hasNext()) {
+				// gs.info('User has ITIL role.');
+				return true;
+			} else {
+				// gs.info('User does not have ITIL role.');
+				return false;
+			}
+		} else {
+			// gs.info('User is not a member of the specified group.');
+			return false;
+		}
+
+    },
+
+    type: 'AutoAssignment'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-09-28 21:15:06</sys_created_on>
+        <sys_id>2527e7a383f09210c99ca6d0deaad353</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>AutoAssignment</sys_name>
+        <sys_package display_value="Auto Assignment" source="x_snc_auto_assign">fabcaa2383bc5210c99ca6d0deaad386</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Auto Assignment">fabcaa2383bc5210c99ca6d0deaad386</sys_scope>
+        <sys_update_name>sys_script_include_2527e7a383f09210c99ca6d0deaad353</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-09-28 22:00:58</sys_updated_on>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>2527e7a383f09210c99ca6d0deaad353</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-09-28 21:15:06</sys_created_on>
+        <sys_id>5547ab6383f09210c99ca6d0deaad3b6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-09-28 21:15:06</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

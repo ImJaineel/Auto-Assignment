@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_action_type_definition">
+    <sys_hub_action_type_definition action="DELETE">
+        <access>public</access>
+        <acls/>
+        <action_status/>
+        <action_template/>
+        <active>true</active>
+        <annotation>AutoAssign</annotation>
+        <attributes>{labelCacheCleanUpExecuted=true}</attributes>
+        <authored_on_release_version>26000</authored_on_release_version>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category display_value="">{}</category>
+        <compiler_build/>
+        <copied_from/>
+        <copied_from_name/>
+        <description/>
+        <flow_priority/>
+        <ih_action>false</ih_action>
+        <internal_name>autoassign</internal_name>
+        <label_cache/>
+        <latest_snapshot/>
+        <master_snapshot/>
+        <master_snapshot_digest/>
+        <name>AutoAssign</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <state>draft</state>
+        <sys_class_name>sys_hub_action_type_definition</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-09-28 22:20:15</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>2f26f3e783349210c99ca6d0deaad319</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AutoAssign</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Auto Assignment" source="x_snc_auto_assign">fabcaa2383bc5210c99ca6d0deaad386</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Auto Assignment">fabcaa2383bc5210c99ca6d0deaad386</sys_scope>
+        <sys_update_name>sys_hub_action_type_definition_2f26f3e783349210c99ca6d0deaad319</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-09-28 22:20:15</sys_updated_on>
+        <system_level>false</system_level>
+        <type/>
+    </sys_hub_action_type_definition>
+    <sys_translated_text action="DELETE" query="documentkey=2f26f3e783349210c99ca6d0deaad319"/>
+    <sys_variable_value action="DELETE" query="document_key=2f26f3e783349210c99ca6d0deaad319"/>
+    <sys_hub_step_instance action="DELETE" query="action=2f26f3e783349210c99ca6d0deaad319"/>
+    <sys_hub_action_input action="DELETE" query="model=2f26f3e783349210c99ca6d0deaad319"/>
+    <sys_hub_action_output action="DELETE" query="model=2f26f3e783349210c99ca6d0deaad319"/>
+    <sys_hub_pill_compound action="DELETE" query="attached_to=2f26f3e783349210c99ca6d0deaad319"/>
+    <sys_hub_action_status_metadata action="DELETE" query="action_type_id=2f26f3e783349210c99ca6d0deaad319"/>
+    <sys_documentation action="DELETE" query="name=var__m_sys_hub_action_input_2f26f3e783349210c99ca6d0deaad319"/>
+    <sys_choice action="DELETE" query="name=var__m_sys_hub_action_input_2f26f3e783349210c99ca6d0deaad319"/>
+    <sys_documentation action="DELETE" query="name=var__m_sys_hub_action_output_2f26f3e783349210c99ca6d0deaad319"/>
+    <sys_choice action="DELETE" query="name=var__m_sys_hub_action_output_2f26f3e783349210c99ca6d0deaad319"/>
+    <sys_hub_action_plan action="DELETE" query="action_id=2f26f3e783349210c99ca6d0deaad319"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Auto Assignment">fabcaa2383bc5210c99ca6d0deaad386</application>
+        <file_path/>
+        <instance_id>cede1f89db6ef198ae4c9027c596199e</instance_id>
+        <instance_name>dev212045</instance_name>
+        <name>sys_hub_action_type_definition_2f26f3e783349210c99ca6d0deaad319</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_action_type_definition"><sys_hub_action_type_definition action="INSERT_OR_UPDATE"><access>public</access><acls/><action_status/><action_template/><active>true</active><annotation>AutoAssign</annotation><attributes>{labelCacheCleanUpExecuted=true}</attributes><authored_on_release_version>26000</authored_on_release_version><callable_by_client_api>false</callable_by_client_api><category display_value="">{}</category><compiler_build/><copied_from/><copied_from_name/><description/><flow_priority/><ih_action>false</ih_action><internal_name>autoassign</internal_name><label_cache/><latest_snapshot/><master_snapshot/><master_snapshot_digest/><name>AutoAssign</name><natlang/><outputs/><pre_compiled>false</pre_compiled><state>draft</state><sys_class_name>sys_hub_action_type_definition</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2024-09-28 22:20:15</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>2f26f3e783349210c99ca6d0deaad319</sys_id><sys_mod_count>0</sys_mod_count><sys_name>AutoAssign</sys_name><sys_overrides/><sys_package display_value="Auto Assignment" source="x_snc_auto_assign">fabcaa2383bc5210c99ca6d0deaad386</sys_package><sys_policy/><sys_scope display_value="Auto Assignment">fabcaa2383bc5210c99ca6d0deaad386</sys_scope><sys_update_name>sys_hub_action_type_definition_2f26f3e783349210c99ca6d0deaad319</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2024-09-28 22:20:15</sys_updated_on><system_level>false</system_level><type/></sys_hub_action_type_definition><sys_translated_text action="delete_multiple" query="documentkey=2f26f3e783349210c99ca6d0deaad319"/><sys_variable_value action="delete_multiple" query="document_key=2f26f3e783349210c99ca6d0deaad319"/><sys_hub_step_instance action="delete_multiple" query="action=2f26f3e783349210c99ca6d0deaad319"/><sys_hub_action_input action="delete_multiple" query="model=2f26f3e783349210c99ca6d0deaad319"/><sys_hub_action_output action="delete_multiple" query="model=2f26f3e783349210c99ca6d0deaad319"/><sys_hub_pill_compound action="delete_multiple" query="attached_to=2f26f3e783349210c99ca6d0deaad319"/><sys_hub_action_status_metadata action="delete_multiple" query="action_type_id=2f26f3e783349210c99ca6d0deaad319"/><sys_documentation action="delete_multiple" query="name=var__m_sys_hub_action_input_2f26f3e783349210c99ca6d0deaad319"/><sys_choice action="delete_multiple" query="name=var__m_sys_hub_action_input_2f26f3e783349210c99ca6d0deaad319"/><sys_documentation action="delete_multiple" query="name=var__m_sys_hub_action_output_2f26f3e783349210c99ca6d0deaad319"/><sys_choice action="delete_multiple" query="name=var__m_sys_hub_action_output_2f26f3e783349210c99ca6d0deaad319"/><sys_hub_action_plan action="delete_multiple" query="action_id=2f26f3e783349210c99ca6d0deaad319"/></record_update>]]></payload>
+        <payload_hash>2021176051</payload_hash>
+        <record_name>AutoAssign</record_name>
+        <reverted_from/>
+        <source>21c343f8c30152106a0cd4fc050131a3</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-10-02 15:52:35</sys_created_on>
+        <sys_id>4cd347f8c30152106a0cd4fc05013198</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1924deee6870000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-10-02 15:52:35</sys_updated_on>
+        <type>Action Type</type>
+        <update_guid>0cd347f849015210f8dc7f0ff70d0c98</update_guid>
+        <update_guid_history>0cd347f849015210f8dc7f0ff70d0c98:2021176051</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-10-02 16:08:45</sys_created_on>
+        <sys_db_object display_value="" name="sys_hub_action_type_definition">sys_hub_action_type_definition</sys_db_object>
+        <sys_id>a7d8bb6944994ee3b0d5ebd58b6e43f1</sys_id>
+        <sys_metadata>2f26f3e783349210c99ca6d0deaad319</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AutoAssign</sys_name>
+        <sys_package display_value="Auto Assignment" source="x_snc_auto_assign">fabcaa2383bc5210c99ca6d0deaad386</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Auto Assignment">fabcaa2383bc5210c99ca6d0deaad386</sys_scope>
+        <sys_scope_delete display_value="">035f1c404a8246009c5734840f3196c1</sys_scope_delete>
+        <sys_update_name>sys_hub_action_type_definition_2f26f3e783349210c99ca6d0deaad319</sys_update_name>
+        <sys_update_version display_value="sys_hub_action_type_definition_2f26f3e783349210c99ca6d0deaad319">4cd347f8c30152106a0cd4fc05013198</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-10-02 16:08:45</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
